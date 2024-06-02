@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Flower Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 text-center">Iris Flower Prediction</h1>
+        <form id="prediction-form" action="/predict" method="post" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="sepal_length">Sepal Length</label>
+                <input type="number" step="any" class="form-control" id="sepal_length" name="sepal_length" required>
+                <div class="invalid-feedback">
+                    Please provide a valid sepal length.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sepal_width">Sepal Width</label>
+                <input type="number" step="any" class="form-control" id="sepal_width" name="sepal_width" required>
+                <div class="invalid-feedback">
+                    Please provide a valid sepal width.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petal_length">Petal Length</label>
+                <input type="number" step="any" class="form-control" id="petal_length" name="petal_length" required>
+                <div class="invalid-feedback">
+                    Please provide a valid petal length.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="petal_width">Petal Width</label>
+                <input type="number" step="any" class="form-control" id="petal_width" name="petal_width" required>
+                <div class="invalid-feedback">
+                    Please provide a valid petal width.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mt-4">Predict</button>
+        </form>
+        {% if prediction %}
+            <div class="alert alert-info mt-4 text-center">
+                <strong>Prediction:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
